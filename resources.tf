@@ -1,3 +1,4 @@
+
 ###  ---  Application  ---  ###
 module "httpd" {
   source = "./modules/httpd"
@@ -14,4 +15,19 @@ module "httpd" {
 module "kong" {
   source = "./modules/kong"
   depends_on = [module.httpd]
+}
+
+module "minio" {
+  source = "./modules/minio"
+  depends_on = [module.kong]
+}
+
+module "velero" {
+  source = "./modules/velero"
+  depends_on = [module.kong]
+}
+
+module "velero-ui" {
+  source = "./modules/velero-ui"
+  depends_on = [module.kong]
 }
