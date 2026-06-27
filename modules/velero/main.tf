@@ -7,10 +7,13 @@ resource "helm_release" "velero" {
   version          = "6.7.0" # check latest
   create_namespace = true
 
-  set {
-    name  = "upgradeCRDs"
-    value = "false"
-  }
+  # ✅ FIX: use list, not block
+  set = [
+    {
+      name  = "upgradeCRDs"
+      value = "false"
+    }
+  ]
  
   values = [<<EOF
 configuration:
