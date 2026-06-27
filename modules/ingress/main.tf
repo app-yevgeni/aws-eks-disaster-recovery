@@ -1,8 +1,8 @@
 
 resource "kubernetes_ingress_v1" "kong_ingress" {
-  depends_on = [
-    helm_release.kong
-  ]
+  #depends_on = [
+  #  helm_release.kong
+  #]
   metadata {
     name      = "${var.name}-ingress"
     namespace = var.namespace
