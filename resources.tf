@@ -34,5 +34,5 @@ module "velero" {
 
 module "velero-ui" {
   source = "./modules/velero-ui"
-  depends_on = [module.minio]
+  depends_on = [module.velero]
 }
